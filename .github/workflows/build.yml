@@ -42,3 +42,9 @@ jobs:
         files: ./app/build/outputs/apk/release/com.apkupdater.ci-release.apk
         body: ${{ github.event.head_commit.message }}
         prerelease: true
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: apkupdater-ci-${{ env.BRANCH }}-${{ github.run_number }}
+        path: ./app/build/outputs/apk/release/com.apkupdater.ci-release.apk
